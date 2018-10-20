@@ -83,6 +83,8 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"status": "BadRequest"})
 			return
 		}
+
+		//構造体をJSONに戻す
 		var buf bytes.Buffer
 		b, _ := json.Marshal(follower)
 		buf.Write(b)
