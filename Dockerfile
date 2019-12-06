@@ -5,8 +5,6 @@ WORKDIR /go/src/sample_docker_compose
 COPY . .
 RUN ls
 
-# RUN go mod download \
-#     && go get -u github.com/rakyll/statik
 
 RUN CGO_ENABLED=1 GOOS=linux go build -a -ldflags '-linkmode external -extldflags "-static"' -o app
 
