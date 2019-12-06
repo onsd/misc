@@ -6,6 +6,7 @@ import(
 )
 
 func main() {
+    // register function
     http.HandleFunc("/", handler)
     http.ListenAndServe(":8080", nil)
 }
