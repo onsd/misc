@@ -8,10 +8,14 @@ import(
 func main() {
     // register function
     // Hello
-    http.HandleFunc("/", handler)
+    http.HandleFunc("/", indexHandler)
     http.ListenAndServe(":9090", nil)
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func indexHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, "Hello NITTC!")
+}
+
+func dangerousHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "THIS IS DANGEROUSE")
 }
