@@ -13,7 +13,7 @@ var COUNT = 10
 func main() {
 	// register function
 	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/dangerous", fixedDangerousHandler)
+	http.HandleFunc("/dangerous", dangerousHandler)
 	http.ListenAndServe(":9090", nil)
 }
 
