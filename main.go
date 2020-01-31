@@ -1,21 +1,32 @@
 package main
 
-import(
-    "fmt"
-    "net/http"
+import (
+	"fmt"
+	"net/http"
+	"os"
+	"strconv"
 )
 
+var COUNT = 10
+
 func main() {
-    // register function
-    // Hello
-    http.HandleFunc("/", indexHandler)
-    http.ListenAndServe(":9090", nil)
+	// register function
+	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/dangerous", dangerousHandler)
+	http.ListenAndServe(":9090", nil)
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello NITTC!")
+	fmt.Fprintf(w, "Hello NITTC!")
 }
 
 func dangerousHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "THIS IS DANGEROUSE")
+	COUNT = COUNT - 1
+	s := strconv.Itoa(COUNT)
+	if s == "0" {
+		fmt.Fprintf(w, "DIED")
+		os.Exit(1)
+	}
+
+	fmt.Fprintf(w, "<h1>"+s+" TIMES UNTIL DIE</h1>")
 }
