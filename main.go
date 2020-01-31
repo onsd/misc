@@ -17,7 +17,7 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello NITTC!")
+	fmt.Fprintf(w, "<h1>Hello SecHack365!</h1>")
 }
 
 func dangerousHandler(w http.ResponseWriter, r *http.Request) {
