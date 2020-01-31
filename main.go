@@ -12,7 +12,7 @@ var COUNT = 10
 func main() {
 	// register function
 	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/dangerous", dangerousHandler)
+	//http.HandleFunc("/dangerous", dangerousHandler)
 	http.ListenAndServe(":9090", nil)
 }
 
@@ -24,7 +24,7 @@ func dangerousHandler(w http.ResponseWriter, r *http.Request) {
 	COUNT = COUNT - 1
 	s := strconv.Itoa(COUNT)
 	if s == "0" {
-		fmt.Fprintf(w, "DIED")
+		// fmt.Fprintf(w, "DIED")
 		os.Exit(1)
 	}
 
